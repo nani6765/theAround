@@ -3,10 +3,10 @@ import { View, Text } from 'react-native';
 
 import { getStyle } from '../../style';
 
-function HeaderView({ url }: { url: string }) {
+function HeaderView() {
   return (
     <View style={getStyle('header')}>
-      <Text style={getStyle('headerText')}>{url}</Text>
+      <Text style={getStyle('headerText')}>TODO</Text>
     </View>
   );
 }
