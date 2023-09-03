@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from '@react-navigation/native-stack';
+
+// import HomePage from './screens/HomeScreen';
+// import WebViewPage from './screens/WebViewScreen';
+// import { StyleSheet } from 'react-native';
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>My Name is Trent, and I just created my first expo app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <NavigationContainer></NavigationContainer>;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const defaultScreenOptions: NativeStackNavigationOptions = {
+  headerStyle: {
+    backgroundColor: '#f4511e',
   },
-});
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
+};
