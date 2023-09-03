@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { View } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-import useURL, { initialValue } from '../storage/useURL';
+import useURL from '../storage/useURL';
 
 function WebViewScreen() {
+  const webViewRef = useRef<null | any>();
   const { url } = useURL();
-  return <WebView source={{ uri: url ?? initialValue }} />;
+
+  useEffect(() => {
+    if (webViewRef.current) {
+      webViewRef.current.reload();
+    }
+  }, [url]);
+
+  return (
+    <View style={{ flex: 1 }}>
+      <WebView source={{ uri: url }} ref={ref => (webViewRef.current = ref)} />
+    </View>
+  );
 }
 
 export default WebViewScreen;
