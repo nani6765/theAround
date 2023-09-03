@@ -1,6 +1,7 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs/src/types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 
+import TabText from './TabText';
 /**
  * @see https://reactnavigation.org/docs/bottom-tab-navigator/
  */
@@ -48,9 +49,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             onPress={onPress}
             onLongPress={onLongPress}
             style={{ flex: 1 }}>
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {`${label}`}
-            </Text>
+            <TabText label={`${label}`} isFocused={isFocused} />
           </TouchableOpacity>
         );
       })}
