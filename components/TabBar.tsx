@@ -2,6 +2,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs/src/types';
 import { View, TouchableOpacity } from 'react-native';
 
 import TabText from './TabText';
+import { getStyle } from '../style';
 /**
  * @see https://reactnavigation.org/docs/bottom-tab-navigator/
  */
@@ -10,14 +11,12 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
     <View style={{ flexDirection: 'row' }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        console.log(options);
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
             ? options.title
             : route.name;
-        console.log(label);
         const isFocused = state.index === index;
 
         const onPress = () => {
@@ -48,7 +47,7 @@ function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}>
+            style={getStyle('bottomTabBar')}>
             <TabText label={`${label}`} isFocused={isFocused} />
           </TouchableOpacity>
         );

@@ -1,23 +1,13 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/src/types';
 import { NavigationContainer } from '@react-navigation/native';
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
 import TabBar from './components/TabBar';
+import HomeScreen from './screens/HomeScreen';
 import WebViewScreen from './screens/WebViewScreen';
+import { bgColor } from './style/variable';
 
 const Tab = createBottomTabNavigator();
-
-const HomeScreen = () => {
-  return (
-    <div>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iure
-      alias doloribus sapiente. Ipsa temporibus incidunt a exercitationem
-      voluptatibus libero explicabo inventore dolor? Nisi totam dignissimos
-      deleniti ipsum tempora ipsam.
-    </div>
-  );
-};
 
 export default function App() {
   return (
@@ -27,7 +17,12 @@ export default function App() {
         tabBar={props => <TabBar {...props} />}
         screenOptions={defaultScreenOptions}>
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="webView" component={WebViewScreen} />
+        <Tab.Screen
+          name="webView"
+          component={WebViewScreen}
+          // webView에선 header를 숨김
+          options={{ headerShown: false }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -35,9 +30,9 @@ export default function App() {
 
 const defaultScreenOptions: BottomTabNavigationOptions = {
   headerStyle: {
-    backgroundColor: '#f4511e',
+    backgroundColor: bgColor.THEME,
   },
-  headerTintColor: '#fff',
+  headerTintColor: bgColor.DEFAULR,
   headerTitleStyle: {
     fontWeight: 'bold',
   },
