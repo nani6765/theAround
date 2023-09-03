@@ -1,6 +1,6 @@
+import { MaterialCommunityIcons, Feather } from '@expo/vector-icons';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
-import SvgUri from 'react-native-svg-uri';
 
 import { ItodoItem } from '../../storage/todoAtom';
 import useTodo from '../../storage/useTodo';
@@ -11,25 +11,24 @@ function TodoItem({ id, task, done }: ItodoItem) {
 
   return (
     <View key={id} style={getStyle('itemContainer')}>
-      <Pressable
-        hitSlop={10}
-        style={getStyle('itemCheckbox')}
-        onPress={() => doneTask(id)}>
+      <Pressable hitSlop={10} onPress={() => doneTask(id)}>
         {done ? (
-          <SvgUri source={require('../../assets/todo/checked.svg')} />
+          <MaterialCommunityIcons
+            name="checkbox-intermediate"
+            size={24}
+            color="black"
+          />
         ) : (
-          <SvgUri source={require('../../assets/todo/unchecked.svg')} />
+          <MaterialCommunityIcons
+            name="checkbox-blank-outline"
+            size={24}
+            color="black"
+          />
         )}
       </Pressable>
-      <Text>{task}</Text>
-      <Pressable
-        style={[
-          getStyle('deleteButton'),
-          done ? null : getStyle('deleteButtonDone'),
-        ]}
-        hitSlop={10}
-        onPress={() => deleteTask(id)}>
-        <SvgUri source={require('../../assets/todo/delete.svg')} />
+      <Text style={getStyle('itemText')}>{task}</Text>
+      <Pressable hitSlop={10} onPress={() => deleteTask(id)}>
+        <Feather name="trash" size={24} color="black" />
       </Pressable>
     </View>
   );

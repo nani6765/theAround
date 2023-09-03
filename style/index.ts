@@ -26,7 +26,13 @@ const styles = StyleSheet.create({
   },
   todoContainer: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? 20 : 0,
+  },
+  listView: {},
+  listTitle: {
+    marginBottom: 35,
+    paddingHorizontal: 15,
+    fontSize: 54,
+    fontWeight: '600',
   },
   separator: {
     marginHorizontal: 10,
@@ -34,15 +40,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(0,0,0,0.2)',
-  },
-  listView: {
-    flex: 1,
-  },
-  listTitle: {
-    marginBottom: 25,
-    paddingHorizontal: 15,
-    fontSize: 41,
-    fontWeight: '500',
   },
   emptyListText: {
     paddingTop: 10,
@@ -58,41 +55,9 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 15,
     paddingHorizontal: 15,
-    backgroundColor: '#f7f8fa',
-  },
-  itemCheckbox: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 20,
-    height: 20,
-    marginRight: 13,
-    borderRadius: 6,
-  },
-  itemCheckboxCheckedIcon: {
-    shadowColor: '#000000',
-    shadowOpacity: 0.14,
-    shadowRadius: 8,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
   },
   itemText: {
-    marginRight: 'auto',
-    paddingRight: 25,
-    fontSize: 15,
-    lineHeight: 20,
-    color: '#737373',
-  },
-  itemTextChecked: {
-    opacity: 0.3,
-    textDecorationLine: 'line-through',
-  },
-  deleteButton: {
-    opacity: 0.8,
-  },
-  deleteButtonDone: {
-    opacity: 0.3,
+    marginRight: 10,
   },
   inputContainer: {
     marginTop: 48,

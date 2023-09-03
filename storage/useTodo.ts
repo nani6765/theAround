@@ -43,7 +43,7 @@ const useTodo = () => {
     if (task.trim() === '') {
       return null;
     }
-    if (task.length > 5) {
+    if (todos.length > 5) {
       return null;
     }
 
