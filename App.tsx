@@ -16,7 +16,7 @@ export default function App() {
         initialRouteName="Home"
         tabBar={props => <TabBar {...props} />}
         screenOptions={defaultScreenOptions}>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
         <Tab.Screen
           name="webView"
           component={WebViewScreen}

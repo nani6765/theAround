@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 
 const key = 'webViewURL';
-const initialValue = 'https://www.naver.com';
+export const initialValue = 'https://www.naver.com';
 
 const useAsyncStorage = () => {
   const [url, setURL] = useState(initialValue);
@@ -21,6 +21,11 @@ const useAsyncStorage = () => {
   }, []);
 
   const storeNewURL = async (value: string) => {
+    const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    if (!urlRegex.test(value)) {
+      return null;
+    }
+
     try {
       await AsyncStorage.setItem(key, value);
       setURL(value);
