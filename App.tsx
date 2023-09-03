@@ -1,17 +1,11 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/src/types';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  createNativeStackNavigator,
-  NativeStackNavigationOptions,
-} from '@react-navigation/native-stack';
-import { Button } from 'react-native';
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack';
 
+import TabBar from './components/TabBar';
 import WebViewScreen from './screens/WebViewScreen';
-// import HomePage from './screens/HomeScreen';
-// import WebViewPage from './screens/WebViewScreen';
-// import { StyleSheet } from 'react-native';
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
@@ -28,15 +22,18 @@ const HomeScreen = () => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="webView">
-        <Stack.Screen component={HomeScreen} name="home" />
-        <Stack.Screen component={WebViewScreen} name="webView" />
-      </Stack.Navigator>
+      <Tab.Navigator
+        initialRouteName="Home"
+        tabBar={props => <TabBar {...props} />}
+        screenOptions={defaultScreenOptions}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="webView" component={WebViewScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-const defaultScreenOptions: NativeStackNavigationOptions = {
+const defaultScreenOptions: BottomTabNavigationOptions = {
   headerStyle: {
     backgroundColor: '#f4511e',
   },
