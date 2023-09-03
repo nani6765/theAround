@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs/src/types';
 import { NavigationContainer } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 import { RecoilRoot } from 'recoil';
 
 import TabBar from './components/TabBar';
@@ -26,6 +27,7 @@ export default function App() {
             options={{ headerShown: false }}
           />
         </Tab.Navigator>
+        <Toast />
       </NavigationContainer>
     </RecoilRoot>
   );
