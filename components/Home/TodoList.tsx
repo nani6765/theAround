@@ -1,5 +1,5 @@
-import React from 'react';
-import { FlatList, SafeAreaView, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { FlatList, SafeAreaView, Text, View, LogBox } from 'react-native';
 
 import TodoItem from './TodoItem';
 import useTodo from '../../storage/useTodo';
@@ -7,6 +7,13 @@ import { getStyle } from '../../style';
 
 function TodoList() {
   const { todos, dones } = useTodo();
+
+  /**
+   * @see https://stackoverflow.com/questions/58243680/react-native-another-virtualizedlist-backed-container
+   */
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
 
   return (
     <SafeAreaView style={getStyle('todoContainer')}>

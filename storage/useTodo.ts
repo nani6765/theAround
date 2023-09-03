@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Toast from 'react-native-toast-message';
 import type { ToastOptions } from 'react-native-toast-message/lib/src/types';
 import { useRecoilState } from 'recoil';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 import { ItodoItem, todoAtom } from './todoAtom';
 
@@ -84,7 +84,8 @@ const useTodo = () => {
     }
 
     const newTask = {
-      id: uuidv4(),
+      // id: uuidv4(),
+      id: `${new Date()}`,
       task,
       done: false,
     };
